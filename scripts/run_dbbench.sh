@@ -179,7 +179,7 @@ sudo pkill -9 db_bench || true
 if [ $SYSTEM == "ext4" ]; then
 	MOUNT_PATH="/mnt/ext4"
 	DIR="$MOUNT_PATH/ext4_${EXT4_JOURNAL_MODE}"
-	PINNING="numactl -N1 -m1"
+	# PINNING="numactl -N1 -m1"
 
 	# Set nvme device path.
 	# DEV_PATH="/dev/nvme2n1"
@@ -230,4 +230,4 @@ elif [ $SYSTEM == "oxbow" ]; then
 fi
 
 # Parse results.
-./parse_results.sh $OUTPUT_DIR
+scripts/parse_results.sh $OUTPUT_DIR

@@ -9,16 +9,16 @@ parse_latency() {
     dir=$1
     bench=$2
     filename=$3
-    echo -n "$bench $dir "
-    (cd $dir; grep $bench $filename | cut -d ':' -f 2 | cut -d ';' -f 1 | sed 's/^[[:space:]]*//' | cut -d ' ' -f 1)
+    echo -n "$(basename $dir) $bench "
+    (cd $dir; grep $bench $filename | grep -v sudo | cut -d ':' -f 2 | cut -d ';' -f 1 | sed 's/^[[:space:]]*//' | cut -d ' ' -f 1)
 }
 
 parse_tput() {
     dir=$1
     bench=$2
     filename=$3
-    echo -n "$bench $dir "
-    (cd $dir; grep $bench $filename | cut -d ':' -f 2 | cut -d ';' -f 2 | sed 's/^[[:space:]]*//' | cut -d ' ' -f 1)
+    echo -n "$(basename $dir) $bench "
+    (cd $dir; grep $bench $filename | grep -v sudo | cut -d ':' -f 2 | cut -d ';' -f 2 | sed 's/^[[:space:]]*//' | cut -d ' ' -f 1)
 }
 
 echo "Latency(micros/op)"
